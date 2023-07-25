@@ -21,19 +21,19 @@ import json
 global oDesktop
 appPath = os.path.realpath(__file__)
 appDir = os.path.split(appPath)[0]
-libPath = os.path.join(appDir,'circuit.dll')
-clr.AddReferenceToFileAndPath(libPath)
-# sys.path.append(r"D:\Study\Script\repository\Circuit\CircuitPy")
-from circuitPy2 import circuitBase
+# libPath = os.path.join(appDir,'circuit.dll')
+# clr.AddReferenceToFileAndPath(libPath)
+sys.path.append(r"C:\work\Study\Script\repository\Circuit\CircuitPy")
+from circuitPy import circuitBase
 
 if __name__ == "__main__":
     cir = circuitBase()
     cir.initProject()
-    cir.message("SNR Calculator V4 20220806")
+    cir.message("SNR Calculator V4.1 20230725")
     cir.message("@author: yongsheng.guo@ansys.com")
-    datas = cir.exportSolutionDatas()
+    datasPath = cir.exportSolutionDatas()
     os.environ["Path"] =  os.path.join(oDesktop.GetExeDir(),r"commonfiles\CPython\3_7\winx64\Release\python") + (":",";")['nt' in os.name] + os.environ["Path"]
-    output = os.popen("python {0} {1}".format(os.path.join(appDir,"EyeSNRV4"),datas),"r")
+    output = os.popen("python {0} {1}".format(os.path.join(appDir,"EyeSNR.py"),datasPath),"r")
     txt = output.read()
     MessageBox.Show(txt)
     cir.message(txt)
