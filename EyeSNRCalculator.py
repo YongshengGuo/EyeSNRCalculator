@@ -21,9 +21,9 @@ import json
 global oDesktop
 appPath = os.path.realpath(__file__)
 appDir = os.path.split(appPath)[0]
-# libPath = os.path.join(appDir,'circuit.dll')
-# clr.AddReferenceToFileAndPath(libPath)
-sys.path.append(r"C:\work\Study\Script\repository\Circuit\CircuitPy")
+libPath = os.path.join(appDir,'circuit.dll')
+clr.AddReferenceToFileAndPath(libPath)
+# sys.path.append(r"C:\work\Study\Script\repository\Circuit\CircuitPy")
 from circuitPy import circuitBase
 
 if __name__ == "__main__":
